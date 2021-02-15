@@ -39,12 +39,12 @@ instance (Unboxed e) => Hashable (SBytes# e)
 
 instance (Hashable (rep e), Hashable i, Index i) => Hashable (AnyBorder rep i e)
   where
-    hashWithSalt salt (AnyBorder l u rep) = salt `hashWithSalt` l
-                                                 `hashWithSalt` u
-                                                 `hashWithSalt` rep
+    hashWithSalt salt (AnyBorder _ _ rep) = salt `hashWithSalt` rep
 
-instance (Hashable (rep e)) => Hashable (AnyChunks rep e)
+instance (Nullable (rep e), Hashable (rep e)) => Hashable (AnyChunks rep e)
   where
-    hashWithSalt salt (AnyChunks rep) = foldl' hashWithSalt salt rep
+    hashWithSalt salt = foldl' hashWithSalt salt . toChunks
+
+
 
 
