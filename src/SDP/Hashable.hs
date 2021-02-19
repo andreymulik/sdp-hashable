@@ -7,7 +7,7 @@
     Maintainer  :  work.a.mulik@gmail.com
     Portability :  portable
     
-    @SDP.Hashable@ provides 'Hashable' for SDP structures.
+    @SDP.Hashable@ provides 'Hashable' instances for @sdp@ structures.
 -}
 module SDP.Hashable
   (
