@@ -1,5 +1,5 @@
 name:          sdp-hashable
-version:       0.2
+version:       0.2.1
 category:      Data Structures
 
 synopsis:      Hashable instances for SDP
@@ -34,7 +34,7 @@ Library
   build-depends:
     base     >= 4.9     && < 5,
     sdp      >= 0.2     && < 1,
-    hashable >= 1.1.1.0 && < 1.4
+    hashable >= 1.1.1.0 && < 1.5
   
   ghc-options: -Wall -Wno-orphans
   

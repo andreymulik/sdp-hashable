@@ -1,8 +1,9 @@
-{-# LANGUAGE MagicHash, FlexibleInstances #-}
+{-# LANGUAGE FlexibleInstances, FlexibleContexts, UndecidableInstances #-}
+{-# LANGUAGE Safe, MagicHash #-}
 
 {- |
     Module      :  SDP.Hashable
-    Copyright   :  (c) Andrey Mulik 2020
+    Copyright   :  (c) Andrey Mulik 2022
     License     :  BSD-style
     Maintainer  :  work.a.mulik@gmail.com
     Portability :  portable
@@ -41,10 +42,9 @@ instance (Hashable (rep e), Hashable i, Index i) => Hashable (AnyBorder rep i e)
   where
     hashWithSalt salt (AnyBorder _ _ rep) = salt `hashWithSalt` rep
 
-instance (Nullable (rep e), Hashable (rep e)) => Hashable (AnyChunks rep e)
+instance (Hashable (rep e), Bordered1 rep Int e, Linear1 rep e) => Hashable (AnyChunks rep e)
   where
     hashWithSalt salt = foldl' hashWithSalt salt . toChunks
-
 
 
 
